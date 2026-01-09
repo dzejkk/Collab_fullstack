@@ -85,3 +85,6 @@ merge via Pull Request (PR)
     git pull
     git branch -d feature/login-jwt
     ```
+
+6. musime poskillit git
+7. este daco

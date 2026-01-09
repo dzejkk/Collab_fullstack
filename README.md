@@ -2,7 +2,7 @@
 
 **recomended working tree**
 
-my-learning-app/
+our-learning-app/
 ├─ backend/
 │  ├─ manage.py
 │  ├─ requirements.txt

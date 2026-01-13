@@ -1,10 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useState,
-  useEffect,
-  Children,
-} from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 import { api } from "../api/client";
 
 const AuthContext = createContext(null);
@@ -18,8 +12,8 @@ export const AuthProvider = ({ children }) => {
     const token = localStorage.getItem("token");
     if (token) {
       api
-        .getCurrentUser()
-        .then((res) => setUser(res.data))
+        .getCurrentUser() //get data about user
+        .then((res) => setUser(res.data)) // set them to the variable
         .catch(() => {
           localStorage.removeItem("token");
         })
@@ -31,7 +25,7 @@ export const AuthProvider = ({ children }) => {
 
   const login = async (email, password) => {
     const response = await api.login(email, password);
-    localStorage.setItem("token", response.data.token);
+    localStorage.setItem("token", response.data.token); // adding token to local storage from fake db
     setUser(response.data.user);
     return response.data;
   };
@@ -63,3 +57,8 @@ export function useAuth() {
   }
   return context;
 }
+
+// here we are using context api, for better variables sharing
+//its hard ot read, but basicaly every component surraunded by
+// auth provider wil get acces to these variables in
+// <AuthContext.Provider value={{ login, logout, register, loading, user }}>

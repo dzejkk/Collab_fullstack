@@ -1,7 +1,19 @@
-import React from "react";
+// src/pages/Dashboard.jsx
+import { Link } from "react-router";
+import { useAuth } from "../hooks/useAuth";
 
-function DashBoard() {
-  return <div>DashBoard</div>;
+export default function Dashboard() {
+  const { user, logout } = useAuth();
+
+  return (
+    <div className="dashboard">
+      <nav>
+        <Link to="/products">Browse Products</Link>
+        <Link to="/profile">My Profile</Link>
+        <button onClick={logout}>Logout</button>
+      </nav>
+      <h1>Welcome, {user?.name}!✌</h1>
+      <main></main>
+    </div>
+  );
 }
-
-export default DashBoard;

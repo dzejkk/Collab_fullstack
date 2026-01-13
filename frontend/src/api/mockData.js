@@ -686,5 +686,5 @@ export const marketItems = [
   },
 ];
 
-export const Token =
+export const token =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImVtYWlsIjoidXNlckBleGFtcGxlLmNvbSIsImlhdCI6MTYxNjIzOTAyMn0.4Adcj0MqVNWT7H2y8nBXVjbP6K4Y5fZ3nJZ8n8Q9yRg";

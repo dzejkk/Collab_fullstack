@@ -1,10 +1,9 @@
 // import axios from "axios"; for now we dont need axios
 // we will use it later when we make real api calls to backend
 
-import { Users, marketItems, Token } from "./mockData";
+import { Users, marketItems, token } from "./mockData";
 
 // simulate network delay
-
 const delay = (ms = 500) => new Promise((r) => setTimeout(r, ms));
 
 export const api = {
@@ -18,5 +17,69 @@ export const api = {
     await delay();
     const item = marketItems.find((item) => item.id === parseInt(id));
     return { data: item };
+  },
+
+  // LOGIN
+  login: async (email, password) => {
+    await delay();
+
+    const user = Users.find(
+      (user) => user.email === email && user.password === password
+    );
+
+    return {
+      data: {
+        token: token,
+        user: {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+        },
+      },
+    };
+  },
+
+  // register
+
+  register: async (userData) => {
+    await delay();
+
+    const newUser = {
+      id: Users.length + 1,
+      ...userData,
+    };
+
+    return {
+      data: {
+        token: token,
+        user: {
+          id: newUser.id,
+          email: newUser.email,
+          name: newUser.name,
+        },
+      },
+    };
+  },
+
+  // get current user (for protected route)
+
+  getCurrentUser: async () => {
+    await delay();
+
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      throw new Error("Not authenticated");
+    }
+
+    const user = Users[0];
+
+    return {
+      data: {
+        id: user.id,
+        email: user.email,
+        name: user.name,
+      },
+    };
   },
 };

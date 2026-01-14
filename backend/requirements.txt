@@ -1,2 +1,2 @@
 Django==5.2.3
-Pillow==25.2
+Pillow==12.1.0

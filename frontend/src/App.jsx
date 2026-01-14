@@ -1,58 +1,94 @@
-import { useEffect, useState } from "react";
+// src/App.jsx
+import { Routes, Route, Navigate } from "react-router";
+import { useAuth } from "./hooks/useAuth";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import ProductList from "./pages/ProductList";
+import ProductDetail from "./pages/ProductDetail";
+import Profile from "./pages/Profile";
 import "./App.css";
-import { api } from "./api/client.js";
-import currencyFormatted from "./utils/currencyFormatter.js";
 
-// simple example how we wil pul data
+// Protected Route wrapper
+const ProtectedRoute = ({ children }) => {
+  const { user, loading } = useAuth();
 
-function App() {
-  const [marketItems, setMarketItems] = useState([]);
-  const [singleItem, setSingleItem] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
-  // pull data from api
-  useEffect(() => {
-    api
-      .getAllItems()
-      .then((response) => {
-        setMarketItems(response.data);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error loading data", error);
-        setIsLoading(false);
-      });
-  }, []);
+  return user ? children : <Navigate to="/login" replace />;
+};
 
-  useEffect(() => {
-    api.getItemById(5).then((response) => {
-      setSingleItem(response.data);
-    });
-  }, []);
+// Redirect if already logged in
+const PublicRoute = ({ children }) => {
+  const { user, loading } = useAuth();
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  return user ? <Navigate to="/dashboard" replace /> : children;
+};
+
+export default function App() {
   return (
-    <>
-      <h2>Hello Martin from frontend</h2>
-      <p>here is list of our items in our Bazzar</p>
-      <p>You are in: {singleItem.location}</p>
+    <Routes>
+      {/* Public routes */}
+      <Route
+        path="/login"
+        element={
+          <PublicRoute>
+            <Login />
+          </PublicRoute>
+        }
+      />
+      <Route
+        path="/register"
+        element={
+          <PublicRoute>
+            <Register />
+          </PublicRoute>
+        }
+      />
 
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <ul>
-          {marketItems.map((item) => (
-            <div key={item.id} className="card-container">
-              <li key={item.id}>
-                <p>{item.title}</p>
-                <img src={item.imageUrl} alt="item-picture" />
-                <p>price: {currencyFormatted(item.price)}</p>
-              </li>
-            </div>
-          ))}
-        </ul>
-      )}
-    </>
+      {/* Protected routes */}
+      <Route
+        path="/dashboard"
+        element={
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/products"
+        element={
+          <ProtectedRoute>
+            <ProductList />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/products/:id"
+        element={
+          <ProtectedRoute>
+            <ProductDetail />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/profile"
+        element={
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        }
+      />
+
+      {/* Default redirect */}
+      <Route path="/" element={<Navigate to="/dashboard" replace />} />
+      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+    </Routes>
   );
 }
-
-export default App;

@@ -1,0 +1,28 @@
+main {
+  padding-block: var(--padding-sizing-m);
+  background-color: var(--muted);
+  margin-block: 2rem;
+  border-radius: var(--radius);
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.categoryCard {
+  min-width: 25rem;
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.categoryCard:hover {
+  background: var(--primary-foreground);
+}

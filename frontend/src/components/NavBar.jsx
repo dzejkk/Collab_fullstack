@@ -10,23 +10,29 @@ function NavBar() {
         <div className={styles.logo}>
           <a href="/homepage">
             <PoorManMarketplaceLogo />
-            <i className={styles.i}>Everything you need for less</i>
+            <i className={styles.i}>...Everything you need for less</i>
           </a>
         </div>
 
-        <div className="links-container">
+        <div>
           <ul>
-            <li className={styles.flexRow}>
-              <a href="">Pridat inzerat</a>
-              <CirclePlus />
+            <li>
+              <a href="">
+                <span>Pridat inzerat</span>
+                <CirclePlus />
+              </a>
             </li>
-            <li className={styles.flexRow}>
-              <Link to="/favorites">Oblubene</Link>
-              <Heart />
+            <li>
+              <Link to="/favorites">
+                <span>Oblubene</span>
+                <Heart />
+              </Link>
             </li>
-            <li className={styles.flexRow}>
-              <Link to="/login">Prihlasit sa</Link>
-              <User2Icon />
+            <li className={styles.linkBtn}>
+              <Link to="/login" style={{ color: "oklch(1 0 0)" }}>
+                <span>Prihlasit sa</span>
+                <User2Icon color="oklch(1 0 0)" />
+              </Link>
             </li>
           </ul>
         </div>

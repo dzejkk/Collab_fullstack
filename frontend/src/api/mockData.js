@@ -1,4 +1,4 @@
-export const Users = [
+export const users = [
   {
     id: 1,
     name: "John Doe",
@@ -158,6 +158,81 @@ export const Users = [
     password: "password123",
     telephone: "+421555123456",
     createdAt: new Date("2025-01-10"),
+  },
+];
+
+export const categories = [
+  {
+    id: 1,
+    name: "Cars",
+    slug: "cars",
+    icon: "Car",
+    description: "Vehicles and automobiles",
+    itemCount: 8,
+  },
+  {
+    id: 2,
+    name: "Bikes",
+    slug: "bikes",
+    icon: "Bike",
+    description: "Bicycles and cycling equipment",
+    itemCount: 5,
+  },
+  {
+    id: 3,
+    name: "Electronics",
+    slug: "electronics",
+    icon: "Smartphone",
+    description: "Phones, computers, and electronic devices",
+    itemCount: 7,
+  },
+  {
+    id: 4,
+    name: "Furniture",
+    slug: "furniture",
+    icon: "Armchair",
+    description: "Home and office furniture",
+    itemCount: 5,
+  },
+  {
+    id: 5,
+    name: "Sports",
+    slug: "sports",
+    icon: "Dumbbell",
+    description: "Sports equipment and gear",
+    itemCount: 5,
+  },
+  {
+    id: 6,
+    name: "Garden",
+    slug: "garden",
+    icon: "Leaf",
+    description: "Garden tools and outdoor equipment",
+    itemCount: 4,
+  },
+  {
+    id: 7,
+    name: "Books",
+    slug: "books",
+    icon: "Book",
+    description: "Books and media",
+    itemCount: 2,
+  },
+  {
+    id: 8,
+    name: "Music",
+    slug: "music",
+    icon: "Music",
+    description: "Musical instruments and equipment",
+    itemCount: 2,
+  },
+  {
+    id: 9,
+    name: "Fashion",
+    slug: "fashion",
+    icon: "Shirt",
+    description: "Clothing and accessories",
+    itemCount: 2,
   },
 ];
 

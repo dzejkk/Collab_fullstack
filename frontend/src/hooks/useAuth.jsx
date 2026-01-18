@@ -5,21 +5,24 @@ const AuthContext = createContext(null);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // 1. Initialize loading based on whether the token exists right now.
+  // If there is no token, loading starts as false.
+  const [loading, setLoading] = useState(() => {
+    return !!localStorage.getItem("token");
+  });
 
   useEffect(() => {
-    // Check if user is logged in on mount
     const token = localStorage.getItem("token");
+
+    // 2. We only need to run logic if the token actually exists
     if (token) {
       api
-        .getCurrentUser() //get data about user
-        .then((res) => setUser(res.data)) // set them to the variable
+        .getCurrentUser()
+        .then((res) => setUser(res.data))
         .catch(() => {
           localStorage.removeItem("token");
         })
         .finally(() => setLoading(false));
-    } else {
-      setLoading(false);
     }
   }, []);
 

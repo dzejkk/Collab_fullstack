@@ -3,11 +3,13 @@ import { Routes, Route, Navigate } from "react-router";
 import { useAuth } from "./hooks/useAuth";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Dashboard from "./pages/Dashboard";
+import DashBoard from "./pages/DashBoard";
 import ProductList from "./pages/ProductList";
 import ProductDetail from "./pages/ProductDetail";
 import Profile from "./pages/Profile";
+import HomePage from "./pages/HomePage";
 import "./App.css";
+import NavBar from "./components/NavBar";
 
 // Protected Route wrapper
 const ProtectedRoute = ({ children }) => {
@@ -17,7 +19,7 @@ const ProtectedRoute = ({ children }) => {
     return <div>Loading...</div>;
   }
 
-  return user ? children : <Navigate to="/login" replace />;
+  return user ? children : <Navigate to="/homepage" replace />;
 };
 
 // Redirect if already logged in
@@ -51,13 +53,22 @@ export default function App() {
           </PublicRoute>
         }
       />
+      <Route
+        path="/homepage"
+        element={
+          <PublicRoute>
+            <NavBar />
+            <HomePage />
+          </PublicRoute>
+        }
+      />
 
       {/* Protected routes */}
       <Route
         path="/dashboard"
         element={
           <ProtectedRoute>
-            <Dashboard />
+            <DashBoard />
           </ProtectedRoute>
         }
       />

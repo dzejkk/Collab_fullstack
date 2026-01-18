@@ -2,7 +2,7 @@
 import { Link } from "react-router";
 import { useAuth } from "../hooks/useAuth";
 
-export default function Dashboard() {
+export default function DashBoard() {
   const { user, logout } = useAuth();
 
   return (

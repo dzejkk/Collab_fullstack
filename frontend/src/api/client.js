@@ -1,7 +1,7 @@
 // import axios from "axios"; for now we dont need axios
 // we will use it later when we make real api calls to backend
 
-import { Users, marketItems, token } from "./mockData";
+import { users, marketItems, categories, token } from "./mockData";
 
 // simulate network delay
 const delay = (ms = 500) => new Promise((r) => setTimeout(r, ms));
@@ -19,12 +19,17 @@ export const api = {
     return { data: item };
   },
 
+  getCategories: async () => {
+    await delay();
+    return { data: categories };
+  },
+
   // LOGIN
   login: async (email, password) => {
     await delay();
 
-    const user = Users.find(
-      (user) => user.email === email && user.password === password
+    const user = users.find(
+      (user) => user.email === email && user.password === password,
     );
 
     return {
@@ -45,7 +50,7 @@ export const api = {
     await delay();
 
     const newUser = {
-      id: Users.length + 1,
+      id: users.length + 1,
       ...userData,
     };
 
@@ -72,7 +77,7 @@ export const api = {
       throw new Error("Not authenticated");
     }
 
-    const user = Users[0];
+    const user = users[0];
 
     return {
       data: {

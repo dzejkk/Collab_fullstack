@@ -1,0 +1,88 @@
+header {
+  border-bottom: 1px solid var(--border);
+  padding-inline: var(--padding-sizing-m);
+  color: var(--foreground);
+  font-size: var(--font-l);
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Remove default ul/li styles */
+ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul li {
+  /* Remove all styling from li - it's just a wrapper now */
+  list-style: none;
+}
+
+/* Move all the styling to the <a> tags */
+ul li:not(.linkBtn) a {
+  padding: var(--padding-sizing-m);
+  border: 1px solid color-mix(in srgb, var(--ring) 20%, transparent 80%);
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: var(--foreground);
+  text-decoration: none;
+}
+
+ul li:not(.linkBtn) a:hover {
+  background-color: var(--accent);
+  color: var(--accent-foreground);
+}
+
+ul li.linkBtn a {
+  padding: var(--padding-sizing-m);
+  background-color: var(--primary);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  color: oklch(1 0 0);
+  text-decoration: none;
+}
+
+ul li.linkBtn a:hover {
+  filter: brightness(1.2);
+}
+
+i {
+  transition: all 0.2s ease-in-out;
+  padding-inline: 1rem;
+  color: var(--foreground);
+}
+
+i:hover {
+  color: var(--primary);
+}
+
+.flexRow {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-items: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+a > svg {
+  vertical-align: middle;
+  pointer-events: none; /* Important! Prevents SVG from blocking clicks */
+}

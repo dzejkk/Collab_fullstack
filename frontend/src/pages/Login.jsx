@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import { useNavigate, Link } from "react-router";
-import "../styles/Login.css";
+import "../styles/Login.module.css";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -23,7 +23,7 @@ export default function Login() {
 
   return (
     <div className="login-page">
-      <h1>Login</h1>
+      <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -44,6 +44,9 @@ export default function Login() {
       </form>
       <p>
         Don't have an account? <Link to="/register">Register</Link>
+      </p>
+      <p>
+        <Link to="/homepage"> or go back 🍕</Link>
       </p>
     </div>
   );

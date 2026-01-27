@@ -21,6 +21,7 @@ export const AuthProvider = ({ children }) => {
         .then((res) => setUser(res.data))
         .catch(() => {
           localStorage.removeItem("token");
+          localStorage.removeItem("userId");
         })
         .finally(() => setLoading(false));
     }
@@ -35,6 +36,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("userId");
     setUser(null);
   };
 
@@ -62,6 +64,6 @@ export function useAuth() {
 }
 
 // here we are using context api, for better variables sharing
-//its hard ot read, but basicaly every component surraunded by
-// auth provider wil get acces to these variables in
+// its hard to read, but basically every component surrounded by
+// auth provider will get acess to these variables in
 // <AuthContext.Provider value={{ login, logout, register, loading, user }}>

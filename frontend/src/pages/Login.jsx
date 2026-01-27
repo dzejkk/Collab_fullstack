@@ -15,7 +15,7 @@ export default function Login() {
 
     try {
       await login(email, password);
-      navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       setError(error.response?.data?.message || "Login failed");
     }
@@ -46,7 +46,7 @@ export default function Login() {
         Don't have an account? <Link to="/register">Register</Link>
       </p>
       <p>
-        <Link to="/homepage"> or go back 🍕</Link>
+        <Link to="/"> or go back 🍕</Link>
       </p>
     </div>
   );

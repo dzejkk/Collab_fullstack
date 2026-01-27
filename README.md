@@ -45,6 +45,7 @@ our-learning-app/
 
 1. figure out conection between django and Vite app
 2. make agreement on auth, AI recomened JWT token auth, not buil in in django
+3. check video "Tech With Tim" in regards to connecting frontend with backend
 
 ### Github workflow
 

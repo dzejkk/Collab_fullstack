@@ -2,14 +2,12 @@
 import { Routes, Route, Navigate } from "react-router";
 import { useAuth } from "./hooks/useAuth";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
-import DashBoard from "./pages/DashBoard";
-import ProductList from "./pages/ProductList";
-import ProductDetail from "./pages/ProductDetail";
 import Profile from "./pages/Profile";
 import HomePage from "./pages/HomePage";
 import "./App.css";
-import NavBar from "./components/NavBar";
+import MainLayout from "./layouts/MainLayout";
+import AddNewOffering from "./pages/AddNewOffering";
+import Favorites from "./pages/Favorites";
 
 // Protected Route wrapper
 const ProtectedRoute = ({ children }) => {
@@ -19,7 +17,7 @@ const ProtectedRoute = ({ children }) => {
     return <div>Loading...</div>;
   }
 
-  return user ? children : <Navigate to="/homepage" replace />;
+  return user ? children : <Navigate to="/" replace />;
 };
 
 // Redirect if already logged in
@@ -30,77 +28,43 @@ const PublicRoute = ({ children }) => {
     return <div>Loading...</div>;
   }
 
-  return user ? <Navigate to="/dashboard" replace /> : children;
+  return user ? <Navigate to="/" replace /> : children;
 };
 
 export default function App() {
   return (
     <Routes>
-      {/* Public routes */}
-      <Route
-        path="/login"
-        element={
-          <PublicRoute>
-            <Login />
-          </PublicRoute>
-        }
-      />
-      <Route
-        path="/register"
-        element={
-          <PublicRoute>
-            <Register />
-          </PublicRoute>
-        }
-      />
-      <Route
-        path="/homepage"
-        element={
-          <PublicRoute>
-            <NavBar />
-            <HomePage />
-          </PublicRoute>
-        }
-      />
+      {/* Main layout */}
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<HomePage />} />
+        <Route
+          path="/add-item"
+          element={
+            <ProtectedRoute>
+              <AddNewOffering />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/favorites"
+          element={
+            <ProtectedRoute>
+              <Favorites />
+            </ProtectedRoute>
+          }
+        />
+      </Route>
 
-      {/* Protected routes */}
-      <Route
-        path="/dashboard"
-        element={
-          <ProtectedRoute>
-            <NavBar />
-            <DashBoard />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/products"
-        element={
-          <ProtectedRoute>
-            <ProductList />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/products/:id"
-        element={
-          <ProtectedRoute>
-            <ProductDetail />
-          </ProtectedRoute>
-        }
-      />
-      <Route
-        path="/profile"
-        element={
-          <ProtectedRoute>
-            <Profile />
-          </ProtectedRoute>
-        }
-      />
-
-      {/* Default redirect */}
-      <Route path="/" element={<Navigate to="/dashboard" replace />} />
-      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      {/* without any layout */}
+      <Route path="/login" element={<Login />} />
     </Routes>
   );
 }

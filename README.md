@@ -41,7 +41,6 @@ our-learning-app/
 └─ (optional) docker-compose.yml
 ```
 
-
 ## ToDo
 
 1. figure out conection between django and Vite app
@@ -61,13 +60,15 @@ merge via Pull Request (PR)
     git pull
    ```
 2. Create a feature branch for each task
- - feature/login-jwt
- - feature/todos-api
- - fix/cors-railway
-   
-   ```
-   git checkout -b feature/login-jwt
-   ```
+
+- feature/login-jwt
+- feature/todos-api
+- fix/cors-railway
+
+  ```
+  git checkout -b feature/login-jwt
+  ```
+
 3. Push your branch
    ```
    git push -u origin feature/login-jwt
@@ -80,11 +81,8 @@ merge via Pull Request (PR)
 
 5. After merge: clean up branch locally
 
-    ```
-    git checkout main
-    git pull
-    git branch -d feature/login-jwt
-    ```
-
-6. musime poskillit git
-7. este daco
+   ```
+   git checkout main
+   git pull
+   git branch -d feature/login-jwt
+   ```

@@ -4,7 +4,7 @@
 import { users, marketItems, categories, token } from "./mockData";
 
 // simulate network delay
-const delay = (ms = 500) => new Promise((r) => setTimeout(r, ms));
+const delay = (ms = 200) => new Promise((r) => setTimeout(r, ms));
 
 export const api = {
   // get all items
@@ -31,6 +31,13 @@ export const api = {
     const user = users.find(
       (user) => user.email === email && user.password === password,
     );
+
+    //store user.id in local storage
+    if (!user) {
+      throw new Error("Invalid credentials");
+    }
+
+    localStorage.setItem("userId", user.id);
 
     return {
       data: {
@@ -72,12 +79,13 @@ export const api = {
     await delay();
 
     const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("userId");
 
     if (!token) {
       throw new Error("Not authenticated");
     }
 
-    const user = users[0];
+    const user = users.find((user) => user.id === parseInt(userId));
 
     return {
       data: {

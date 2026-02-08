@@ -13,10 +13,11 @@ import {
   Music,
   Shirt,
 } from "lucide-react";
-import { categories } from "../api/mockData";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const HomePage = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,6 +27,8 @@ const HomePage = () => {
         setData(response.data || []);
       } catch (err) {
         console.error(err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -45,6 +48,8 @@ const HomePage = () => {
   };
   const IconComponent = iconMap[data.icon];
 
+  if (loading) return <LoadingSpinner />;
+
   return (
     <main>
       <div className={styles.container}>
@@ -52,8 +57,8 @@ const HomePage = () => {
           // This is NOT a return statement - it's the arrow function body
           const IconComponent = iconMap[category.icon];
 
-          // THIS is the return statement for the map function
           return (
+            // get dynamic url from category object from db
             <Link to={`/category/${category.slug}`} key={category.id}>
               <div className={styles.categoryCard}>
                 <h2>{category.name}</h2>

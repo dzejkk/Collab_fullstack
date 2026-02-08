@@ -3,6 +3,8 @@ main {
   background-color: var(--muted);
   margin-block: 2rem;
   border-radius: var(--radius);
+
+  animation: fade-in 0.3s ease-in-out;
 }
 
 .container {
@@ -25,4 +27,14 @@ main {
 
 .categoryCard:hover {
   background: var(--primary-foreground);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

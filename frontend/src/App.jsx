@@ -8,6 +8,7 @@ import "./App.css";
 import MainLayout from "./layouts/MainLayout";
 import AddNewOffering from "./pages/AddNewOffering";
 import Favorites from "./pages/Favorites";
+import CategoryPage from "./pages/CategoryPage";
 
 // Protected Route wrapper
 const ProtectedRoute = ({ children }) => {
@@ -37,6 +38,7 @@ export default function App() {
       {/* Main layout */}
       <Route element={<MainLayout />}>
         <Route path="/" element={<HomePage />} />
+        <Route path="/category/:categorySlug" element={<CategoryPage />} />
         <Route
           path="/add-item"
           element={

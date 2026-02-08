@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { api } from "../api/client";
 import styles from "../styles/HomePge.module.css";
+import { Link } from "react-router";
 import {
   Car,
   Bike,
@@ -12,6 +13,7 @@ import {
   Music,
   Shirt,
 } from "lucide-react";
+import { categories } from "../api/mockData";
 
 const HomePage = () => {
   const [data, setData] = useState([]);
@@ -52,11 +54,15 @@ const HomePage = () => {
 
           // THIS is the return statement for the map function
           return (
-            <div className={styles.categoryCard} key={category.id}>
-              <h2>{category.name}</h2>
-              <p>{category.description}</p>
-              {IconComponent && <IconComponent size={84} strokeWidth={0.75} />}
-            </div>
+            <Link to={`/category/${category.slug}`} key={category.id}>
+              <div className={styles.categoryCard}>
+                <h2>{category.name}</h2>
+                <p>{category.description}</p>
+                {IconComponent && (
+                  <IconComponent size={84} strokeWidth={0.75} />
+                )}
+              </div>
+            </Link>
           );
         })}
       </div>

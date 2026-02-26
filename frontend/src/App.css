@@ -42,9 +42,9 @@
 }
 
 img {
-  aspect-ratio: 2/1;
-  max-width: 300px;
-
+  /* aspect-ratio: 16/8; */
+  min-width: 300px;
+  max-height: 170px;
   object-fit: cover;
 }
 

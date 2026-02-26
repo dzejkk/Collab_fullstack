@@ -48,6 +48,7 @@ export default function Login() {
       <p>
         <Link to="/"> or go back 🍕</Link>
       </p>
+      "john@example.com", "password123",
     </div>
   );
 }

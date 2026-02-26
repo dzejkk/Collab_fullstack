@@ -1,0 +1,23 @@
+.loading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  gap: 20px;
+}
+
+.spinner {
+  width: 20px;
+  border: 2px solid transparent;
+  border-top-color: var(
+    --ring
+  ); /* just make one par of the ring colored then animate */
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

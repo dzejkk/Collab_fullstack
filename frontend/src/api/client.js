@@ -4,7 +4,7 @@
 import { users, marketItems, categories, token } from "./mockData";
 
 // simulate network delay
-const delay = (ms = 200) => new Promise((r) => setTimeout(r, ms));
+const delay = (ms = 400) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export const api = {
   // get all items

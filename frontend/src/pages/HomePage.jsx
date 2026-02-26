@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { api } from "../api/client";
 import styles from "../styles/HomePge.module.css";
+import { Link } from "react-router";
 import {
   Car,
   Bike,
@@ -12,9 +13,11 @@ import {
   Music,
   Shirt,
 } from "lucide-react";
+import LoadingSpinner from "../components/LoadingSpinner";
 
 const HomePage = () => {
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -24,6 +27,8 @@ const HomePage = () => {
         setData(response.data || []);
       } catch (err) {
         console.error(err);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
@@ -43,6 +48,8 @@ const HomePage = () => {
   };
   const IconComponent = iconMap[data.icon];
 
+  if (loading) return <LoadingSpinner />;
+
   return (
     <main>
       <div className={styles.container}>
@@ -50,13 +57,17 @@ const HomePage = () => {
           // This is NOT a return statement - it's the arrow function body
           const IconComponent = iconMap[category.icon];
 
-          // THIS is the return statement for the map function
           return (
-            <div className={styles.categoryCard} key={category.id}>
-              <h2>{category.name}</h2>
-              <p>{category.description}</p>
-              {IconComponent && <IconComponent size={84} strokeWidth={0.75} />}
-            </div>
+            // get dynamic url from category object from db
+            <Link to={`/category/${category.slug}`} key={category.id}>
+              <div className={styles.categoryCard}>
+                <h2>{category.name}</h2>
+                <p>{category.description}</p>
+                {IconComponent && (
+                  <IconComponent size={84} strokeWidth={0.75} />
+                )}
+              </div>
+            </Link>
           );
         })}
       </div>

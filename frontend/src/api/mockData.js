@@ -375,7 +375,7 @@ export const marketItems = [
     sellerId: 10,
     description: "Electric assist, 80km range, perfect for commuting",
     imageUrl:
-      "https://images.unsplash.com/photo-1591768793355-74d04bb6608f?w=500",
+      "https://images.unsplash.com/photo-1545087250-4198cf725c37?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     status: "active",
     location: "Žilina",
   },
@@ -387,7 +387,8 @@ export const marketItems = [
     dateOfListing: new Date("2025-01-06"),
     sellerId: 11,
     description: "Tricks and stunts ready, reinforced frame",
-    imageUrl: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500",
+    imageUrl:
+      "https://images.unsplash.com/photo-1627403516444-da5d6efa7a8f?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     status: "active",
     location: "Nitra",
   },
@@ -585,7 +586,7 @@ export const marketItems = [
     sellerId: 6,
     description: "Pro Staff model, barely used, with bag",
     imageUrl:
-      "https://images.unsplash.com/photo-1622279457486-62785a5f8f07?w=500",
+      "https://images.unsplash.com/photo-1627314387807-df615e8567de?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     status: "active",
     location: "Trnava",
   },
@@ -597,7 +598,8 @@ export const marketItems = [
     dateOfListing: new Date("2025-01-06"),
     sellerId: 7,
     description: "158cm, with bindings, great condition",
-    imageUrl: "https://images.unsplash.com/photo-1563020379-e0b9e9d6d5e4?w=500",
+    imageUrl:
+      "https://images.unsplash.com/photo-1529669851596-ba9a5549af95?q=80&w=2064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     status: "active",
     location: "Poprad",
   },

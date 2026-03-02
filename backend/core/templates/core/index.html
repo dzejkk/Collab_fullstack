@@ -1,4 +1,3 @@
-
 {% extends 'core/base.html' %}
 
 {% block title %}Welcome{% endblock %}
@@ -12,11 +11,7 @@
                 <div>
                     <a href="{% url 'item:detail' item.id %}">
                         <div>
-                            {% if item.image %}
-                                <img src="{{ item.image.url }}" class="rounded-t-xl">
-                            {% else %}
-                                <img src="/media/item_images/no-image.png" class="rounded-t-xl">
-                            {% endif %}
+                            <img src="{{ item.image.url }}" class="rounded-t-xl">
                         </div>
 
                         <div class="p-6 bg-white rounded-b-xl">
